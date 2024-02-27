@@ -1,182 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --primaryTextColor: #232e35;
+    /* Untuk title atau judul */
+    --secondaryTextColor: #656d72;
+    /* Untuk text biasa seperti paragraph contohnya */
+
+    --borderColor: #f1f1f1;
+    --lineColor: #d9d9d9;
+    /* untuk line di pre-title */
+
+    --primaryBackgroundColor: #fff;
+    --secondaryBackgroundColor: #fbfbfb;
+    --thirdBackgroundColor: #f5f3fe;
+
+    --primaryIconColor: #7e74f1;
+    --primaryIconColorHover: #5d51e8;
+
+    --sectionPadding: 6rem 0;
+
+    --itemBorderRadius: 0.7rem;
+}
+
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-  font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
+    font-family: "";
 }
-/*navbar*/
-nav {
-  display: flex;
-  background-color: coral;
-  justify-content: space-around;
-  /* padding: 20px 0; atas bawah 20  kiri kanan 0 */
-  /* atur padding dengan flex */
-  height: 45px;
-  align-items: center;
-  color: whitesmoke;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    color: var(--primaryTextColor);
 }
+
+p {
+    font-size: 1rem;
+    /* 16 px */
+    line-height: 1.9rem;
+    /*30.4 px */
+}
+
+p,
+span,
+label,
+input,
+textarea,
+li {
+    color: var(--secondaryTextColor);
+}
+
+a {
+    text-decoration: none;
+    /*biar gak ada garis dibawah tulisann*/
+}
+
+/* End Preparation */
+
+.main-container {
+    width: 1200px;
+    margin: 0 auto;
+    /*supaya ke tengah dan solid 1200 pixel*/
+}
+
+@media screen and (max-width: 1200px) {
+    .main-container {
+        width: 90%;
+    }
+}
+
+/* Buttons */
+.btn {
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 1.5px solid var(--borderColor);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 3px 5px;
+}
+
+/* Titles */
+.section-title {
+    margin: 1rem 0 4rem;
+    font-size: 2rem;
+}
+
+.pre-title {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    color: var(--secondaryTextColor);
+    position: relative;
+    padding-left: 40px;
+    width: fit-content;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.pre-title::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--lineColor);
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 50%;
+}
+
+/* Layouts */
+.grid-3 {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; use this first, use code below when its time for explaining responsive design part */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+/* --- Logo and Navigation Menu --- */
+.nav {
+    display: flex;
+    /*supaya ke samping rata*/
+    justify-content: space-between;
+    /*ngasih jarak*/
+    padding: 2rem 0;
+}
+
 nav ul {
-  display: flex;
-  list-style: none;
-  width: 40%;
-  justify-content: space-between;
-  transition: all 0.4s;
+    list-style: none;
+    /*supaya gk dapet titik titik*/
+    display: flex;
+    gap: 4rem;
 }
-nav .logo {
-  font-family: "Srisakdi", cursive;
-  letter-spacing: 3px; /*space antar char*/
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.logo a {
+    color: var(--primaryTextColor);
+}
+
+/* Navigation Menu */
+nav ul li {
+    display: flex;
+    align-items: center;
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 0.9rem;
+    color: var(--primaryTextColor);
 }
 
-nav ul li a:hover {
-  color: teal;
-}
-  /* hamburger menu */
-  .menu-toggle{
-    display: none; 
-    flex-direction: column;
-    height: 17px;
-    justify-content: space-between;
-    position: relative;
- }
- .menu-toggle input{
-     position: absolute;
-     top:-5px;
-     left:-3px;
-     width:21px;
-     height: 21px;
-     opacity: 0;
-     cursor: pointer;
-     z-index: 2;
- }
- .menu-toggle span{
-     display: block;
-     width: 21px;
-     height: 2px;
-     background-color: whitesmoke;
-     border-radius: 3px;
-     transition: all 0.7s;
- }
-
-   /*x on hamburger menu*/
-   .menu-toggle span:nth-child(2){
-    transform-origin: left center;
-  }
-  
-  .menu-toggle span:nth-child(4){
-    transform-origin: left center;
-  }
-  
-  .menu-toggle input:checked ~ span:nth-child(2){
-    transform: rotate(45deg) ;
-  }
-  
-  .menu-toggle input:checked ~ span:nth-child(4){
-    transform: rotate(-45deg) ;
-  }
-  /* invis span ke 2 / child ke 3 */
-  .menu-toggle input:checked ~ span:nth-child(3){
-    width: 0%;
-    opacity: 0;
-    transition: .1s
-  }
-
-  .image {
-   
-    width: 100%;
-    height: auto;  
-    max-width: 140px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+/* tiga garis navigasi */
+.tigagaris div {
+    width: 25px;
+    height: 2px;
+    background-color: #000;
+    margin: 7px;
+    transition: all 0.3s;
+    z-index: 99;
 }
 
-.container {
+.tigagaris {
+    display: none;
+    z-index: 99;
+    position: fixed;
+    top: 33px;
+    right: 35px;
+}
+
+/* Hero Section */
+#hero {
+    height: 720px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* We're not going to use automatic template columns, because we need to know when the columns is go below. So we can exchange the order of the element */
+    align-items: center;
+}
+
+.hero-name {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0.5rem 0 1rem;
+}
+
+.hero-name span {
+    color: var(--primaryIconColor) !important;
+}
+
+.hero-right img {
+    width: 50%;
+}
+
+.hero-right {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+}
 
-    border: 2px solid blue;
-    padding: 8px;
-    border-radius: 5px;
+/* Jasa Section */
+#Jasa {
+    background-color: var(--secondaryBackgroundColor);
+    padding: var(--sectionPadding);
+}
+
+.Jasa .pre-title {
     margin: 0 auto;
-
 }
-main {
+
+.Jasa-title {
+    text-align: center;
+}
+
+.Jasa {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--primaryBackgroundColor);
+    border-radius: var(--itemBorderRadius);
+}
+
+.Jasa h4 {
+    margin: 1.5rem 0;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.Jasa-icon {
+    background: var(--thirdBackgroundColor);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 1.3rem;
+    border-radius: 0.5rem;
+}
+
+.Jasa-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+.Jasa-icon {
+    background: var(--thirdBackgroundColor);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 1.3rem;
+    border-radius: 0.5rem;
+}
+
+.Jasa-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+
+/* Skills and Education */
+#skills {
+    padding: var(--sectionPadding);
+    background: var(--secondaryBackgroundColor);
+}
+
+.skills-grid {
+    display: grid;
+    /* grid-template-columns: 40% 60%; */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.education {
     display: flex;
-    flex-direction: row;
+    gap: 1rem;
 }
 
-.box {
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
+.education .line {
+    padding: 0 0.7rem;
 }
-/* supaya ada jarak antar box  */
-.flexone{
-flex-grow: 1;
+
+.education .line div {
+    width: 2px;
+    height: 100%;
+    background: var(--borderColor);
+    position: relative;
 }
-.flextwo{
-    flex-grow: 2;
-    }
+
+.education-info p {
+    margin: 0.6rem 0 1.4rem;
+}
+
+.education-years {
+    margin-bottom: 3rem;
+}
+
+/* The dot on the line */
+.education .line div:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: var(--borderColor);
+    border-radius: 50%;
+    position: absolute;
+    left: -6px;
+}
+
+/* Right side of Skills */
+.skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1.5rem;
+}
+
+.skills-right ul {
+    line-height: 2rem;
+    padding: 0 1rem;
+}
+
+/* Contact Section */
+#contact {
+    padding: var(--sectionPadding);
+}
+
+.contact {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.contact-form div {
+    margin-bottom: 1.4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1.3rem;
+    font-family: "Roboto", sans-serif;
+    background: var(--secondaryBackgroundColor);
+    border: 1px solid var(--borderColor);
+    border-radius: 3px;
+    resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #9d9fa1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border: 1px solid #7d7d7d;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.75rem 1.3rem;
+    background-color: var(--primaryIconColor);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn-submit:hover {
+    background-color: var(--primaryIconColorHover);
+}
+
+/* Contact Section - Right Side */
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.contact-item-icon {
+    background: var(--thirdBackgroundColor);
+    /* padding: 0.8rem 1rem; */
+    width: 53px;
+    height: 53px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+.contact-item-detail h4 {
+    margin-bottom: 0.6rem;
+}
+
+/*Alamat Section*/
+
+.Alamat-title {
+    text-align: center;
+}
+
+.Alamat {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--primaryBackgroundColor);
+    border-radius: var(--itemBorderRadius);
+}
+
+/* Footer Section */
 footer {
+    padding: 4rem 0;
+    background: var(--secondaryBackgroundColor);
     text-align: center;
 }
-h2 {
-  
-    text-align: center;
-    color: brown;
-    text-justify: inter-word;
-    word-wrap: break-word;
 
+.footer-icons {
+    margin-bottom: 1rem;
 }
-h5 {
-  text-align: center;
-  color: red;
-  word-wrap: break-word;
- 
-}
-p {
-    text-align: justify;
-    text-justify: inter-word;
-}
-@media screen and (max-width: 768px) {
-    nav ul{
-      width: 50%;
-    }
-  }
 
-  @media screen and (max-width: 576px) {
-   .menu-toggle{
-       display: flex;
-   }
-   main{
-       flex-direction: column-reverse;
-   }
-    nav ul{
-      position: absolute;
-      right:0;
-      top: 0;
-      width: 50%;
-      flex-direction: column;
-      height: 100vh;
-      justify-content:space-evenly;
-      align-items: center;
-      background-color: coral;
-      /* transform: translateX(100%);  */
-      transition: all 0.72s;
-      opacity: 0;
-      z-index: 2;
-    }
-    nav ul.menushow{
-        opacity: 0.5;
-        /* transform: translateX(0); */
-    }
-  }
+.footer-icons a {
+    margin: 0 0.5rem;
+}
 
+.footer-icons svg {
+    fill: #3e3f40;
+}
+
+.footer-icons a:hover svg {
+    fill: #000;
+}
