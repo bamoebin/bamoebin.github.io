@@ -40,8 +40,9 @@
       top: 0;
       height: 100vh;
       flex-direction: column;
-      background: var(--primaryBackgroundColor);
+      background: var(--primaryIconColor);
       border-left: 1px solid var(--borderColor);
+      box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
       z-index: 9;
       transform: translateX(100%);
       transition: 0.2s ease-in-out;

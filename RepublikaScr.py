@@ -3,6 +3,9 @@ import requests
 import time
 import datetime
 import json
+import locale
+
+locale.setlocale(locale.LC_TIME, 'id_ID.UTF-8')
 
 html_text = requests.get('https://www.republika.co.id/').text
 soup = BeautifulSoup(html_text, 'lxml')
@@ -14,7 +17,7 @@ def find_news():
             title = new.h3.text.strip()
             categories = new.find('span', class_ = 'kanal-info').text
             waktu = new.find('div', class_ = 'date').text.split('-')
-            wanci = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            wanci = datetime.datetime.now().strftime("%d %B %Y %H:%M:%S")
             info = {"Judul Berita    :" : title, "Waktu Publish   :" : waktu[1].strip(), "Kategori        :" : categories, "Waktu Akses     :" : wanci}
             data.append(info)
         jdumps = json.dumps(data)
