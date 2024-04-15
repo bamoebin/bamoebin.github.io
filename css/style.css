@@ -31,7 +31,7 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 h1,
@@ -81,12 +81,13 @@ a {
 
 /* Buttons */
 .btn {
-    padding: 1rem 1.5rem;
-    background: white;
-    border: 1.5px solid var(--borderColor);
+    padding: 1rem 1rem;
+    background: var(--primaryIconColorHover);
+    border: 1.5px solid var(--secondaryTextColor);
     cursor: pointer;
     transition: 0.2s ease-in-out;
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .btn:hover {
@@ -146,6 +147,7 @@ a {
     background: var(--primaryIconColor);
     border-left: 1px solid var(--borderColor);
     box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
 nav ul {
@@ -161,7 +163,7 @@ nav ul {
     align-items: center;
     font-weight: 700;
     font-size: 2rem;
-    margin-right: 10px;
+    margin-left: 20px;
 }
 
 .logo a {
