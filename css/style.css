@@ -26,10 +26,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: "";
+    font-family: "Roboto", sans-serif;
 }
 
 h1,
@@ -139,7 +140,7 @@ nav ul {
     list-style: none;
     /*supaya gk dapet titik titik*/
     display: flex;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 /* Logo */
@@ -165,7 +166,7 @@ nav ul li a {
 }
 
 /* tiga garis navigasi */
-.tigagaris div {
+.burger div {
     width: 25px;
     height: 2px;
     background-color: #000;
@@ -174,7 +175,7 @@ nav ul li a {
     z-index: 99;
 }
 
-.tigagaris {
+.burger {
     display: none;
     z-index: 99;
     position: fixed;
